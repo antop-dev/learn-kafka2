@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: chapter-01
+  kafka:
+    producer:
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+    consumer:
+      value-deserializer: org.apache.kafka.common.serialization.ByteArrayDeserializer
+      group-id: sample-consumer-group
