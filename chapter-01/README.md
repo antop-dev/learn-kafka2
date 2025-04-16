@@ -2,30 +2,32 @@
 
 ## 카프카 설치
 
-### Kafka 4.0 설치
+이 책에 맞춰서 하려면 브로커를 3개 설치해야 한다. [이 블로그](https://curiousjinan.tistory.com/entry/kafka-docker-kraft)에서 제공해준 컴포츠 파일을 약간 수정했다.
 
-카프카 설치 (각가 옵션 뭔지 모름 -_-/)
+`peter-kafka/docker-compose.yml` 파일을 사용한다.
+
+```
+~/peter-kafka> docker-compose up -d
+```
+
+상위 컨테이너 명은 `docker-compose.yml` 파일이 있는 디렉토리명이 된다.
+
+![SCR-20250416-jlgd.png](assets/SCR-20250416-jlgd.png)
+
+브라우저로 http://localhost:8085 접속해보면 Kafka UI 사이트를 사용할 수 있다.
+
+![SCR-20250416-jltp.png](assets/SCR-20250416-jltp.png)
+
+브로커 포트는 `10000`이다.
+
+## 기타 카프카 설치
+
+이 외에 시도 했던 다른 카프카들 설치
+
+### Kafka 4.0 설치
 
 ```
 docker run -d --name kafka-local -p 9092:9092 apache/kafka:latest
-```
-
-토픽<sup>`Topic`</sup> 생성
-
-```
-/opt/kafka/bin/kafka-topics.sh --bootstrap-server localhost:9092 --create --topic peter-overview01
-```
-
-컨슈머<sup>`Consumer`</sup> 실행
-
-```
-/opt/kafka/bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic peter-overview01
-```
-
-프로듀서<sup>`Producer`</sup> 실행
-
-```
-/opt/kafka/bin/kafka-console-producer.sh --bootstrap-server localhost:9092 --topic peter-overview01
 ```
 
 ### 카프카 3.7.0 (Kraft) 클러스터로 설치하기
