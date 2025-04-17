@@ -1,6 +1,6 @@
 spring:
   application:
-    name: chapter-01
+    name: chapter-02
   kafka:
     producer:
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
