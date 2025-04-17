@@ -4,8 +4,8 @@ spring:
   kafka:
     producer:
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
-#      bootstrap-servers: localhost:10000
+      bootstrap-servers: localhost:10000,localhost:10001,localhost:10002
     consumer:
       value-deserializer: org.apache.kafka.common.serialization.ByteArrayDeserializer
       group-id: sample-consumer-group
-#      bootstrap-servers: localhost:10000
+      bootstrap-servers: localhost:10000,localhost:10001,localhost:10002
