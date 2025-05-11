@@ -58,6 +58,6 @@
 
 정확히 한번 전송<sup>`exactly-once`</sup>
 
-Spring Kafka는 `spring.kafka.producer.transaction-id-prefix` 설정만 하면 Spring Boot가 자동으로 KafkaTransactionManager빈을 구성하여 리스너 컨테이너에 연결한다.
+Spring Kafka는 `spring.kafka.producer.transaction-id-prefix` 설정만 하면 Spring Boot가 자동으로 `KafkaTransactionManager`빈을 구성하여 리스너 컨테이너에 연결한다.
 
 https://docs.spring.io/spring-kafka/reference/kafka/transactions.html
