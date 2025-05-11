@@ -1,0 +1,20 @@
+logging:
+  level:
+    org.springframework.kafka.core: trace
+    org.springframework.transaction.interceptor: trace
+
+spring:
+  application:
+    version: chapter-05
+  kafka:
+    producer:
+      bootstrap-servers: localhost:10000,localhost:10001,localhost:10002
+      value-serializer: org.springframework.kafka.support.serializer.StringOrBytesSerializer
+      # https://docs.spring.io/spring-kafka/reference/kafka/transactions.html
+      transaction-id-prefix: peter-transaction-
+#
+#      properties:
+#        enable.idempotence: true
+#        max.in.flight.requests.per.connection: 5
+#        retries: 5
+#        acks: all
