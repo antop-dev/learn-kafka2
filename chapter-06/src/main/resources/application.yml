@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: chapter-06
+  kafka:
+    bootstrap-servers: localhost:10000,localhost:10001,localhost:10002
+    producer:
+      value-serializer: org.springframework.kafka.support.serializer.StringOrBytesSerializer
+      transaction-id-prefix: peter-transaction-
+    consumer:
+      group-id: consumer-group
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      auto-offset-reset: earliest

@@ -1,0 +1,6 @@
+spring:
+  kafka:
+    consumer:
+      properties:
+        group.instance.id: ${consumer.group.instance.id}
+        session.timeout.ms: 60_000
