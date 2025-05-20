@@ -1,0 +1,16 @@
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  - job_name: "kafka-exporter"
+    scrape_interval: 5s
+    static_configs:
+      - targets:
+        - kafka-exporter:9308
+  - job_name: "peter-kafka-jmx-exporter"
+    scrape_interval: 1s
+    static_configs:
+      - targets:
+        - peter-kafka01-jmx-exporter:5556
+        - peter-kafka02-jmx-exporter:5556
+        - peter-kafka03-jmx-exporter:5556

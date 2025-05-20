@@ -1,0 +1,4 @@
+startDelaySeconds: 1
+jmxUrl: service:jmx:rmi:///jndi/rmi://peter-kafka03:9999/jmxrmi
+rules:
+  - pattern: ".*"
