@@ -1,20 +1,24 @@
 [versions]
 kotlin = "1.9.25"
 spring-boot = "3.4.5"
-kafka = "3.8.1"
+apache-kafka = "3.8.1"
+confluent-kafka = "7.9.1"
 kotlin-logging = "7.0.6"
 logback = "1.5.18"
 springdoc = "2.8.8"
 
 [libraries]
 kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "kotlin" }
-kafka-clients = { module = "org.apache.kafka:kafka-clients", version.ref = "kafka" }
+kafka-clients = { module = "org.apache.kafka:kafka-clients", version.ref = "apache-kafka" }
 kotlin-logging-jvm = { module = "io.github.oshai:kotlin-logging-jvm", version.ref = "kotlin-logging" }
 logback-classic = { module = "ch.qos.logback:logback-classic", version.ref = "logback" }
 springdoc-openapi-starter-webmvc-ui = { module = "org.springdoc:springdoc-openapi-starter-webmvc-ui", version.ref = "springdoc" }
+kafka-avro-serializer = { module = "io.confluent:kafka-avro-serializer", version.ref = "confluent-kafka" }
+kafka-schema-registry-client = { module = "io.confluent:kafka-schema-registry-client", version.ref = "confluent-kafka" }
 
 [plugins]
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kotlin-plugin-spring = { id = "org.jetbrains.kotlin.plugin.spring", version.ref = "kotlin" }
 spring-boot = { id = "org.springframework.boot", version.ref = "spring-boot" }
 spring-dependency-management = { id = "io.spring.dependency-management", version = "1.1.7" }
+avro = { id = "com.github.davidmc24.gradle.plugin.avro", version = "1.9.1" }
