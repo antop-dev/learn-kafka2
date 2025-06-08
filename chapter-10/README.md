@@ -102,12 +102,53 @@
 
 ## 스키마 레지스트리 호환성
 
-| 설정값                 | 설명                              |
-|:--------------------|:--------------------------------|
-| NONE                | 호환성 검사 없음                       |
-| BACKWARD            | 이전 버전과의 하위 호환성 검사               |
-| BACKWARD_TRANSITIVE | 모든 이전 버전과의 하위 호환성 검사            |
-| FORWARD             | 다음 버전과의 상위 호환성 검사               |
-| FORWARD_TRANSITIVE  | 모든 다음 버전과의 상위 호환성 검사            |
-| FULL                | 양방향 호환성 검사 (BACKWARD + FORWARD) |
-| FULL_TRANSITIVE     | 모든 버전과의 양방향 호환성 검사              |
+스키마가 진화함에 따라 호환성 레벨을 검사해야 한다.
+
+<table>
+    <thead>
+        <tr>
+            <th>호환성 레벨</th>
+            <th>지원 버전(컨슈머 기준)</th>
+            <th>변경 허용 항목</th>
+            <th>스키마 업데이트 순서</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>BACKWARD (기본값)</td>
+            <td>자신과 동일한 버전과 하나 아래의 하위 버전<br>(예: 버전3으로 버전2도 처리 가능) /td>
+            <td rowspan="2">필드 삭제, 기본값이 지정된 필드 추가</td>
+            <td rowspan="2">컨슈머 → 프로듀서</td>
+        </tr>
+        <tr>
+            <td>BACKWARD_TRANSITIVE</td>
+            <td>자신과 동일한 버전을 보함한 모든 하위 버전<br>(예: 버전3으로 버전2, 버전1 처리 가능)</td>
+        </tr>
+        <tr>
+            <td>FORWARD</td>
+            <td>자신과 동일한 버전과 하나 위의 상위 버전<br>(예: 버전2로 버전3도 처리 가능)</td>
+            <td rowspan="2">필드 추가, 기본값이 지정된 필드 삭제</td>
+            <td rowspan="2">프로듀서 → 컨슈머</td>
+        </tr>
+        <tr>
+            <td>FORWARD_TRANSITIVE</td>
+            <td>자신과 동일한 버전을 포함한 모든 상위 버전<br>(예: 버전2로 버전3과 그 이상 처리 가능)</td>
+        </tr>
+        <tr>
+            <td>FULL</td>
+            <td>자신과 동일한 버전과 하나 위 또는 하나 아래 버전<br>(예: 버전2로 버전1 또는 버전3 처리 가능)</td>
+            <td rowspan="2">기본값이 지정된 필드 추가, 기본값이 지정된 필드 삭제</td>
+            <td rowspan="2">순서 상관없음</td>
+        </tr>
+        <tr>
+            <td>FULL_TRANSITIVE</td>
+            <td>자신과 동일한 버전을 포함한 모든 상위 버전과 하위 버전<br>(예: 버전 번호 무관하게 모든 버전 처리 가능)</td>
+        </tr>
+        <tr>
+            <td>NONE</td>
+            <td></td>
+            <td>호환을 체크하지 않음</td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
